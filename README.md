@@ -1,5 +1,5 @@
 # Boutique test project
 
-<img src="./screenshot"></img>
+<img src="./screenshot.png" width="350" >
 
 
