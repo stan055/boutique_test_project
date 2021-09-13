@@ -26,7 +26,8 @@ class _PageTwoState extends State<PageTwo> {
         stream: _downloader.stream,
         builder: (context, AsyncSnapshot<List<Download>> snapshot) {
           if (snapshot.hasData) {
-            final downloadsFilesLenght = snapshot.data!.length;
+            final downloadsFilesLenght =
+                Downloader.countDownloadCompleate(snapshot.data!);
             final downloadingFilesCount =
                 Downloader.countDownloading(snapshot.data!);
             return Padding(

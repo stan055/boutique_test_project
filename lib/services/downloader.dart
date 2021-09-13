@@ -32,7 +32,7 @@ class Downloader {
     final duration = Random().nextInt(8) + 3;
     Future.delayed(Duration(seconds: duration)).then((_) {
       try {
-        d.status = 'Download ${DownloadField.compleate}';
+        d.status = DownloadField.compleate;
         d.data = duration;
         _streamController.add(_downloads);
       } catch (e) {
@@ -53,6 +53,9 @@ class Downloader {
 
   static int countDownloading(List<Download> list) =>
       list.where((d) => d.status == DownloadField.downloading).toList().length;
+
+  static int countDownloadCompleate(List<Download> list) =>
+      list.where((d) => d.status == DownloadField.compleate).toList().length;
 
   deleteWhere(position) {
     _downloads.removeWhere((element) => element.position == position);

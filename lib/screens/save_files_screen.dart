@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:imitation_of_files_download/drawer/drawer.dart';
 import 'package:imitation_of_files_download/screens/page_one.dart';
 import 'package:imitation_of_files_download/screens/page_two.dart';
-import 'package:imitation_of_files_download/services/downloader.dart';
-import 'package:provider/provider.dart';
 
 class SaveFilesScreen extends StatefulWidget {
   const SaveFilesScreen({Key? key}) : super(key: key);
@@ -14,20 +12,12 @@ class SaveFilesScreen extends StatefulWidget {
 
 class _SaveFilesScreenState extends State<SaveFilesScreen> {
   var _selectedIndex = 0;
-  late Downloader downloader;
-
-  final _widgetOptions = <Widget>[PageOne(), PageTwo()];
+  final _pages = <Widget>[PageOne(), PageTwo()];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-  }
-
-  @override
-  void initState() {
-    downloader = context.read<Downloader>();
-    super.initState();
   }
 
   @override
@@ -38,7 +28,7 @@ class _SaveFilesScreenState extends State<SaveFilesScreen> {
       ),
       drawer: NavigationDrawer(),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _pages.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
